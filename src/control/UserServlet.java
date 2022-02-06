@@ -2,7 +2,6 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,22 +9,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import model.AddressBean;
-import model.AddressModelDS;
-import model.UserBean;
+import model.UserModelDS;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class UserServlet
  */
-@WebServlet("/PagesServlet")
-public class PagesServlet extends HttpServlet {
+@WebServlet("/UserServlet")
+public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PagesServlet() {
+    public UserServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,23 +33,24 @@ public class PagesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		if(action.equals("signup")) {
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/SignUp.jsp");
+		UserModelDS model = new UserModelDS();
+		if(action.equals("view")) {
+			try {
+				request.setAttribute("users", model.getUsers());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/UserList.jsp");
 			dispatcher.forward(request, response);
-		}
-		else if(action.equals("signin")) {
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/SignIn.jsp");
-			dispatcher.forward(request, response);
-		}
-		else if(action.equals("user")) {
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/PrivateArea.jsp");
-			dispatcher.forward(request, response);
-		}
-		else if(action.equals("dp")) {
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Data.jsp");
-			dispatcher.forward(request, response);
-		}
-		else if(action.equals("admin")) {
+		} else if(action.equals("makeAdmin")) {
+			String username = request.getParameter("id");
+			try {
+				model.makeAdmin(username);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AdminDashboard.jsp");
 			dispatcher.forward(request, response);
 		}

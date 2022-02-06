@@ -55,14 +55,8 @@ public class SignUpServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		if(utente != null) {
-			if(session.getAttribute("user") == null) {
-				session.setAttribute("user", utente);
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ProductControl");
-				dispatcher.forward(request, response);
-			}
-		}
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/SignIn.jsp");
+		dispatcher.forward(request, response);
 
 
 	}

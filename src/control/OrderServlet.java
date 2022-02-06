@@ -68,7 +68,17 @@ public class OrderServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		else if(action.equals("admin")) {
-			
+			OrderModelDS model = new OrderModelDS();
+			Collection<OrderBean> ordini = null;
+			try {
+				 ordini = model.orderCatalog();
+				 request.setAttribute("ordini", ordini);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/OrderCatalog.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 

@@ -29,26 +29,30 @@ body {
 						<h4 class="card-title mt-2">Registrati</h4>
 					</header>
 					<article class="card-body">
-						<form action="SignUpServlet" method="post" >
+						<form action="SignUpServlet" method="post" onsubmit="event.preventDefault(); signupCheck(this)">
 							<div class="form-row">
 								<div class="col form-group">
 									<label>Nome </label>   
 			  						<input type="text" class="form-control" placeholder="" name="nome">
 								</div>
+								<div class="invalid-feedback" id="error">Nome non valido</div>
 								<div class="col form-group">
 									<label>Cognome</label>
 								  	<input type="text" class="form-control" placeholder=" " name="cognome">
-								</div> 
+								</div>
+								<div class="invalid-feedback" id="error">Cognome non valido</div> 
 							</div>
 							<div class="form-row">
 								<div class="col form-group">
 									<label>Contatto</label>
-									<input type="text" class="form-control" placeholder="" name="contatto">
+									<input type="text" class="form-control" placeholder="xxx-xxx-xxxx" name="contatto">
 								</div> 
+								<div class="invalid-feedback" id="error">Contatto non valido</div>
 								<div class="col form-group">
 									<label>Data di nascita</label>
 								  	<input type="date" class="form-control" placeholder=" " name="data_nascita">
-								</div> 
+								</div>
+								<div class="invalid-feedback" id="error">Data di nascita non valida</div> 
 							</div>
 		
 							<div class="form-group">
@@ -59,10 +63,12 @@ body {
 								<label>Username</label>
 							    <input class="form-control" type="text" name="username">
 							</div>
+							<div class="invalid-feedback" id="error">Username non valido</div>
 							<div class="form-group">
-								<label>Password</label>
+								<label>Password (almeno 8 caratteri)</label>
 							    <input class="form-control" type="password" name="password">
 							</div>  
+							<div class="invalid-feedback" id="error">Password non valido</div>
 						    <div class="form-group">
 						        <button type="submit" class="btn btn-primary btn-block"> Registrati  </button>
 						    </div>   
@@ -75,5 +81,6 @@ body {
 	</div>
 	</section>
 	<%@include file="../fragments/Footer.jsp"  %>	
+<script type="text/javascript" src="javascript/signup.js"></script>
 </body>
 </html>

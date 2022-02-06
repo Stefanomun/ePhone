@@ -50,10 +50,14 @@ public class SignInServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		if(utente != null) {
+			System.out.println("Sono entrato 1");
 			if(session.getAttribute("user") == null) {
+				System.out.println("Sono entrato 2");
 				if(admin.equals("true")) {
+					System.out.println("Sono entrato 3");
 					if(utente.isAmministratore()) {
 						session.setAttribute("user", utente);
+						System.out.println("Sono amministratore");
 						session.setAttribute("admin", "yes");
 						RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ProductControl");
 						dispatcher.forward(request, response);

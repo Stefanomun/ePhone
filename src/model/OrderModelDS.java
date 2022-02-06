@@ -68,7 +68,7 @@ public class OrderModelDS {
 		Connection connessione = null;
 		PreparedStatement statement = null;
 		Collection<OrderBean> ordini = new LinkedList<OrderBean>();
-		String query = "SELECT * FROM ordine";
+		String query = "SELECT * from ordine o JOIN utente u ON (o.id_utente = u.username)";
 
 		try {
 			connessione = DriverManagerConnectionPool.getConnection();
@@ -79,11 +79,11 @@ public class OrderModelDS {
 
 			while(rs.next()) {
 				OrderBean bean = new OrderBean();
-				bean.setId(rs.getInt("id"));
-				bean.setDate(rs.getString("data_ordine"));
-				bean.setSomma(rs.getDouble("somma_pagata"));
-				bean.setIVA(rs.getDouble("IVA_complessiva"));
-				bean.setUser(rs.getString("id_utente"));
+				bean.setId(rs.getInt("o.id"));
+				bean.setDate(rs.getString("o.data_ordine"));
+				bean.setSomma(rs.getDouble("o.somma_pagata"));
+				bean.setIVA(rs.getDouble("o.IVA_complessiva"));
+				bean.setUser(rs.getString("u.username"));
 				ordini.add(bean);
 			}
 		}finally {

@@ -37,8 +37,8 @@ public class UserModelDS {
 		
 		Connection connessione = null;
 		PreparedStatement statement = null;
-		String query = "INSERT INTO utente (username, pwd, nome, cognome, contatto, email, data_nascita)" +
-				" VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO utente (username, pwd, nome, cognome, contatto, email, data_nascita, amministratore)" +
+				" VALUES (?, ?, ?, ?, ?, ?, ?, false)";
 		
 		try {
 			connessione = DriverManagerConnectionPool.getConnection();
@@ -184,7 +184,42 @@ public class UserModelDS {
 				DriverManagerConnectionPool.rilasciaConnessione(connessione);
 			}
 		}
-		
+	}
+	
+	public boolean makeAdmin(String username) throws SQLException{
+		Connection connessione = null;
+		PreparedStatement statement = null;
+		String query = null, ivaString = null;
+
+		query = "UPDATE utente SET amministratore = 1 WHERE username = ?";
+		try {
+			connessione = DriverManagerConnectionPool.getConnection();
+			statement = connessione.prepareStatement(query);
+			statement.setString(1, username);
+			System.out.println("Query " + statement);
+			System.out.println(statement.executeUpdate());
+			connessione.commit();
+			return true;
+		}
+		catch(SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getStackTrace());
+		}
+		finally {
+			try {
+				if (statement != null)
+					try {
+						statement.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			} finally {
+				DriverManagerConnectionPool.rilasciaConnessione(connessione);
+			}
+		}
+		return false;
 	}
 		
 }

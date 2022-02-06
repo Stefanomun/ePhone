@@ -30,11 +30,9 @@
 		    Area Amministrativa
 		  </button>
 		  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		  	<a class="dropdown-item" href="">Dashboard</a>
-		  	<a class="dropdown-item" href="">Visualizza ordini</a>
-		  	<a class="dropdown-item" href="">Inserisci articolo</a>
-		  	<a class="dropdown-item" href="">Modifica Articolo</a>
-		    <a class="dropdown-item" href="">Rimuovi articolo</a>
+		  	<a class="dropdown-item" href="PagesServlet?action=admin">Dashboard</a>
+		  	<a class="dropdown-item" href="OrderServlet?action=admin">Visualizza ordini</a>
+		    <a class="dropdown-item" href="PhoneServlet?action=admin">Gestisci catalogo</a>
 		    <a class="dropdown-item" href="">Lista clienti</a>
 		    <a class="dropdown-item" href="LogoutServlet">Logout</a>
   </div>
