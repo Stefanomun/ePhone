@@ -31,8 +31,6 @@ public class PhoneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		ProductModelDS model = new ProductModelDS();
 		String action = request.getParameter("action");
 		if(action != null && action.equals("admin")) {
@@ -79,6 +77,29 @@ public class PhoneServlet extends HttpServlet {
 			}
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AdminDashboard.jsp");
 			dispatcher.forward(request, response);
+		} else if(action != null && action.equals("addPage")) {
+			try {
+				request.setAttribute("marche", model.brandCatalog());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/NewPhone.jsp");
+			dispatcher.forward(request, response);
+		} else if(action != null && action.equals("add")) {
+			String id_casa_produttrice = request.getParameter("marca");
+			String nome = request.getParameter("modello");
+			String ram = request.getParameter("ram");
+			String taglia = request.getParameter("taglia");
+			String particolarita = request.getParameter("particolarita");
+			String colore = request.getParameter("colore");
+			String prezzo = request.getParameter("prezzo");
+			double IVA = (Double.parseDouble(prezzo) * 22) / 100;
+			String IVAString = String.valueOf(IVA);
+			String quantita = request.getParameter("quantita");
+			String foto = request.getParameter("foto");
+			model.insert(nome, ram, taglia, colore, particolarita, prezzo, IVAString, foto, id_casa_produttrice, quantita);
+			
 		} else {
 			String id = request.getParameter("id");
 			System.out.println(id);

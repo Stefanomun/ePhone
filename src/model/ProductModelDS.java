@@ -298,4 +298,60 @@ public class ProductModelDS {
 		}
 		return false;
 	}
+	
+	public boolean insert(String nome, String ram, String taglia, String colore, String particolarita, String prezzo,
+			String IVA , String foto, String id_casa_produttrice, String quantita) {
+		
+		Connection connessione = null;
+		PreparedStatement statement = null;
+		String query = "INSERT INTO telefono (nome, ram, taglia, colore, epoca, ricondizionato, prezzo, IVA, foto, id_casa_produttrice, quantita)" +
+				" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			connessione = DriverManagerConnectionPool.getConnection();
+			statement = connessione.prepareStatement(query);
+			statement.setString(1, nome);
+			statement.setString(2, ram);
+			statement.setString(3, taglia);
+			statement.setString(4, colore);
+			if (particolarita.equals("epoca")) {
+				statement.setString(5, "1");
+				statement.setString(6, "0");
+			} else if (particolarita.equals("ricondizionato")) {
+				statement.setString(5, "0");
+				statement.setString(6, "1");
+			} else {
+				statement.setString(5, "0");
+				statement.setString(6, "0");
+			}
+			statement.setString(7, prezzo);
+			statement.setString(8, IVA);
+			statement.setString(9, foto);
+			statement.setString(10, id_casa_produttrice);
+			statement.setString(11, quantita);
+			System.out.println("New Phone " + statement);
+			System.out.println(statement.executeUpdate());
+			connessione.commit();
+			return true;
+		}
+		catch(SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getStackTrace());
+		}
+		finally {
+			try {
+				if (statement != null)
+					try {
+						statement.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			} finally {
+				DriverManagerConnectionPool.rilasciaConnessione(connessione);
+			}
+		}
+		return false;
+	}
 }

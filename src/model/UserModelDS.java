@@ -100,6 +100,7 @@ public class UserModelDS {
 				bean.setData_nascita(rs.getString("data_nascita"));
 				bean.setContact(rs.getString("contatto"));
 				bean.setEmail(rs.getString("email"));
+				bean.setAmministratore(rs.getBoolean("amministratore"));
 				users.add(bean);
 			}
 		}finally {

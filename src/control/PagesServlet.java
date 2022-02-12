@@ -55,6 +55,10 @@ public class PagesServlet extends HttpServlet {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AdminDashboard.jsp");
 			dispatcher.forward(request, response);
 		}
+		else if(action.equals("sm")){
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Creator.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**

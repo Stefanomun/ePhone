@@ -10,7 +10,6 @@
 html {
   position: relative;
   min-height: 100%;
-  padding-bottom:160px;
 }
 body {
   margin-bottom: 160px;
@@ -27,7 +26,7 @@ footer {
 <footer>
   <div class="text-center p-3" style="background-color: rgba(90, 95, 151, 255);">
     ePhone© 2021<br>
-    Created by: <a class="text-white" href="">Stefano Mungiello</a>
+    Created by: <a class="text-white" href="PagesServlet?action=sm">Stefano Mungiello</a>
   </div>
 </footer>
 </body>

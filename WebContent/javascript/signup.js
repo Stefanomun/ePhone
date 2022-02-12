@@ -6,27 +6,32 @@ function signupCheck(form){
 	var email = $("#email").val();
 	var username = $("#username").val();
 	var password = $("#password").val();
+	var flag = true;
 
 	$(".error").remove();
 
-	if (nome.length < 1 && nome.length > 15) {
-		$("#nome").removeClass("is-valid");
-		$("#nome").addClass("is-invalid");
-	} else {
-		$("#nome").removeClass("is-invalid");
-		$("#nome").addClass("is-valid");
-	}
+	var patternName = /^[a-zA-Z ]+$/;
+	if(!cognome.match(patternName) || cognome.length < 1 || cognome.length > 20) {
+		 flag=false;
+		  $("#cognome").removeClass("is-valid");
+		  $("#cognome").addClass("is-invalid");
+		} else {
+		  $("#cognome").removeClass("is-invalid");
+		  $("#cognome").addClass("is-valid");
+		}
 
-	if (cognome.length < 1 && cognome.length > 30) {
-		$("#cognome").removeClass("is-valid");
-		$("#cognome").addClass("is-invalid");
-	} else {
-		$("#cognome").removeClass("is-invalid");
-		$("#cognome").addClass("is-valid");
-	}
+	if(!nome.match(patternName) || nome.length < 1 || nome.length >15) {
+		 flag=false;
+		  $("#nome").removeClass("is-valid");
+		  $("#nome").addClass("is-invalid");
+		} else {
+		  $("#nome").removeClass("is-invalid");
+		  $("#nome").addClass("is-valid");
+		}
 
-	var telformat = /^\(([0-9]{3})\)[-\.\s]([0-9]{3})[-\.\s]([0-9]{4})$/;
-	if (!contatto.match(telformat) && contatto.length < 10 && contatto.length > 10) {
+	var numberpattern= /^[-+]?[0-9]+$/;
+	if (!contatto.match(numberpattern) || contatto.length < 10 || contatto.length > 10) {
+		flag=false;
 		$("#contatto").removeClass("is-valid");
 		$("#contatto").addClass("is-invalid");
 	} else {
@@ -35,6 +40,7 @@ function signupCheck(form){
 	}
 
 	if(data_nascita == ""){
+		flag=false;
 		$("#data_nascita").removeClass("is-valid");
 		$("#data_nascita").addClass("is-invalid");
 	} else {
@@ -44,6 +50,7 @@ function signupCheck(form){
 	
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	if (!email.match(mailformat)) {
+		flag=false;
 		$("#email").removeClass("is-valid");
 		$("#email").addClass("is-invalid");
 	} else {
@@ -52,6 +59,7 @@ function signupCheck(form){
 	}
 	
 	if (username.length < 1 ) {
+		flag=false;
 		$("#username").removeClass("is-valid");
 		$("#username").addClass("is-invalid");
 	} else {
@@ -60,11 +68,16 @@ function signupCheck(form){
 	}
 
 	if (password.length < 8 ) {
+		flag=false;
 		$("#password").removeClass("is-valid");
 		$("#password").addClass("is-invalid");
 	} else {
 		$("#password").removeClass("is-invalid");
 		$("#password").addClass("is-valid");
+	}
+	
+	if (flag) {
+		form.submit();
 	}
 
 }

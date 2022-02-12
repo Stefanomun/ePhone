@@ -76,6 +76,10 @@ a{
   		<%}
 				}%>
 		</table>
-
+		<form action="PhoneServlet" method="post">
+			<input type="hidden" value="addPage" name="action">
+			<input type="submit" class="btn btn-sm btn-outline-secondary" value="Aggiungi un nuovo articolo">
+		</form>
+<%@include file="../fragments/Footer.jsp"  %>
 </body>
 </html>

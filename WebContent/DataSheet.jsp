@@ -96,10 +96,11 @@ body {
 		</div>
 		<div class="pt-1 mb-4">
 			<%if(user != null && admin.equals("yes")){ %>
-			<%-- AGGIUNGI LA MODIFICA --%> 
-			<a href=" ">
-	            <button class="btn btn-dark btn-lg btn-block" type="submit">Modifica</button>
-	        </a>
+				<form action="PhoneServlet" method="post">
+					<input type="hidden" value="modifyPage" name="action">
+					<input type="hidden" value="<%=phone.getID() %>" name="id">
+					<input type="submit" class="btn btn-dark btn-lg btn-block" value="Modifica">
+				</form>
 			<%}else{ %>
 			<form action="CartServlet" method="post">
 				<input type="hidden" value="add" name="action">

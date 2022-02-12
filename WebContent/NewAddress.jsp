@@ -28,15 +28,18 @@ body {
 						<h4 class="card-title mt-2">Nuovo indirizzo</h4>
 					</header>
 					<article class="card-body">
-						<form action="NewAddressServlet" method="post" >
+						<form action="NewAddressServlet" method="post" onsubmit="event.preventDefault(); addressCheck(this)">
 							<div class="form-row">
 								<div class="col form-group">
 									<label>Comune </label>   
-			  						<input type="text" class="form-control" placeholder="" name="comune">
+			  						<input type="text" class="form-control" placeholder="" id="comune" name="comune">
+									<div class="invalid-feedback" id="errorid">Inserisci un comune valido</div>
+			  						<div class="valid-feedback" id="errorName">Corretto</div>
 								</div>
 								<div class="col form-group">
 									<label>Provincia</label>
-								  	<select class="form-control" name="provincia">
+								  	<select class="form-control" name="provincia" id="provincia">
+								  		<option value="provincia">Provincia</option>
 								  		<option value="AG">AG</option>
 										<option value="AL">AL</option>
 										<option value="AN">AN</option>
@@ -148,20 +151,28 @@ body {
 										<option value="VI">VI</option>
 										<option value="VT">VT</option>
 								  	</select>
+								  	<div class="invalid-feedback" id="errorid">Inserisci una provincia valida</div>
+			  						<div class="valid-feedback" id="errorName">Corretto</div>
 								</div>
 								<div class="col form-group">
 									<label>CAP</label>
-									<input type="text" class="form-control" placeholder="" name="cap">
+									<input type="text" class="form-control" placeholder="" name="cap" id="cap">
+									<div class="invalid-feedback" id="errorid">Inserisci un CAP valido</div>
+			  						<div class="valid-feedback" id="errorName">Corretto</div>
 								</div> 
 							</div> 
 							<div class="form-row">
 								<div class="col form-group">
 									<label>Via</label>
-								  	<input type="text" class="form-control" placeholder=" " name="via">
+								  	<input type="text" class="form-control" placeholder=" " name="via" id="via">
+									<div class="invalid-feedback" id="errorid">Inserisci una via valida</div>
+			  						<div class="valid-feedback" id="errorName">Corretto</div>
 								</div> 
 								<div class="col form-group">
 								<label>Civico</label>
-								<input type="text" class="form-control" placeholder="" name="civico">
+								<input type="text" class="form-control" placeholder="" name="civico" id="civico">
+								<div class="invalid-feedback" id="errorid">Inserisci un civico valido</div>
+			  					<div class="valid-feedback" id="errorName">Corretto</div>
 							</div>
 							</div>
 						    <div class="form-group">
@@ -174,5 +185,6 @@ body {
 	</div>
 </section>
 <%@include file="../fragments/Footer.jsp"  %>
+<script type="text/javascript" src="javascript/address.js"></script>
 </body>
 </html>

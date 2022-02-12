@@ -53,15 +53,18 @@ body {
 										<div class="form-outline mb-4">
 	                    					<input type="text" id="username" name="username" class="form-control form-control-lg" />
 	                    						<label class="form-label" for="username">Username</label>
+	                    						<div class="invalid-feedback" id="errorid">Inserisci l'username</div>
+			  									<div class="valid-feedback" id="errorName">Corretto</div>
 	                  					</div>
-	                  					<div class="invalid-feedback" id="error">Inserisci l'Username</div>
+	                  					
 	                  					
 	                					<div id="passwordError"></div>
 	                  					<div class="form-outline mb-4">
 		                    				<input type="password" id="password" name="password" class="form-control form-control-lg" />
 		                    				<label class="form-label" for="password">Password</label>
+		                    				<div class="invalid-feedback" id="errorid">Inserisci la password</div>
+			  								<div class="valid-feedback" id="errorName">Corretto</div>
 		                  				</div>
-		                  				<div class="invalid-feedback" id="error">Inserisci la password</div>
 	                 
 	                  					<div class="form-check form-switch">
 						  					<input class="form-check-input" type="checkbox" id="admin" name="admin" value="true">

@@ -33,16 +33,8 @@
 		  	<a class="dropdown-item" href="PagesServlet?action=admin">Dashboard</a>
 		  	<a class="dropdown-item" href="OrderServlet?action=admin">Visualizza ordini</a>
 		    <a class="dropdown-item" href="PhoneServlet?action=admin">Gestisci catalogo</a>
-		    <a class="dropdown-item" href="">Lista clienti</a>
+		    <a class="dropdown-item" href="UserServlet?action=view">Lista clienti</a>
 		    <a class="dropdown-item" href="LogoutServlet">Logout</a>
-  </div>
-</div>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button class="btn btn-outline-secondary" type="submit">Search</button>
-    </form>
   </div>
 </nav>
 </body>

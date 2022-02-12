@@ -61,10 +61,13 @@ a{
 							<input type="submit" class="btn btn-sm btn-outline-secondary" value="Rendi amministratore">
 						</form>
 					</td>
-					<%} %>
+					<%} else {%>
+					<td>Utente amministratore</td>
 				</tr>
-  		<%}
-				}%>
+				<%}
+				}
+		  }
+				%>
 		</table>
 </body>
 </html>
