@@ -98,10 +98,12 @@
              	<input type="hidden" value="<%=phone.getID() %>" name="id">
               	<input type="submit" class="btn btn-sm btn-outline-secondary" value="Dettagli">
               </form>
+              <%if((user == null) || (user != null && !admin.equals("yes"))){ %>
               <form action="CartServlet" method="post">
              	<input type="hidden" value="add" name="action">
              	<input type="hidden" value="<%=phone.getID() %>" name="id">
               	<input type="submit" class="btn btn-sm btn-outline-secondary" value="Aggiungi al carrello">
+              	<%} %>
               </form>
               </div>
               </div>

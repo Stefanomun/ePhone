@@ -93,20 +93,22 @@ a{
 					<td><%=phone.getMarca() %></td>
 					<td><%=phone.getNome() %></td>
 					<td><%=phone.getPrezzo() %></td>
-					<td><%=clicks %></td>
+					<td id="clicks"><%=clicks %></td>
 					<td>
 						<form action="CartServlet" method="post">
 							<input type="hidden" value="plus" name="action">
 							<input type="hidden" value="<%=phone.getID() %>" name="id">
-							<input type="submit" class="btn btn-sm btn-outline-secondary" value="+">
+							<input type="submit" onclick="add()" class="btn btn-sm btn-outline-secondary" value="+">
 						</form>
+						<!-- <input type="submit" onclick="add()" class="btn btn-sm btn-outline-secondary" value="+"> -->
 					</td>
 					<td>
 						<form action="CartServlet" method="post">
 							<input type="hidden" value="minus" name="action">
 							<input type="hidden" value="<%=phone.getID() %>" name="id">
 							<input type="submit" class="btn btn-sm btn-outline-secondary" value="-">
-						</form>
+						</form> 
+						<!-- <input type="submit" onclick="remove()" class="btn btn-sm btn-outline-secondary" value="-"> -->
 					</td>
 					<td>
 						<form action="CartServlet" method="post">
@@ -135,5 +137,6 @@ a{
 	
 	
 	<%@include file="../fragments/Footer.jsp"  %>
+	<script type="text/javascript" src="javascript/cart.js"></script>
 </body>
 </html>
