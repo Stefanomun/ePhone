@@ -98,7 +98,7 @@ a{
 						<form action="CartServlet" method="post">
 							<input type="hidden" value="plus" name="action">
 							<input type="hidden" value="<%=phone.getID() %>" name="id">
-							<input type="submit" onclick="add()" class="btn btn-sm btn-outline-secondary" value="+">
+							<input type="submit" class="btn btn-sm btn-outline-secondary" value="+">
 						</form>
 						<!-- <input type="submit" onclick="add()" class="btn btn-sm btn-outline-secondary" value="+"> -->
 					</td>

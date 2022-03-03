@@ -19,14 +19,22 @@ body {
 }
 </style>
 <meta charset="ISO-8859-1">
-<title>I tuoi ordini</title>
+<title>Ordini Effettuati</title>
 </head>
 <body>
 
 	<%@include file="../fragments/AdminNavbar.jsp"  %>
 	
-	<h2 style="padding-left: 15px">I tuoi ordini</h2>
+	<h2 style="padding-left: 15px">Ordini effettuati</h2>
 	<hr>
+	<div>
+		<form class="form-inline my-2 my-lg-0" action="SearchServlet">
+			<input type="hidden" value="utente" name="action">
+			 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="utente" name = "utente">
+      		 <button class="btn btn-outline-secondary" type="submit">Search</button>
+		</form>
+	</div>
+	<br>
 	<table class="table">
 		 <thead>
 		    <tr>
@@ -34,7 +42,7 @@ body {
 		      <th scope="col">Data</th>
 		      <th scope="col">Importo pagato</th>
 		      <th scope="col">Di cui IVA</th>
-		      <th scope="col">Utene</th>
+		      <th scope="col">Utente</th>
 		      <th scope="col"></th>
 		    </tr>
 		  </thead>

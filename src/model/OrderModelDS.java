@@ -51,6 +51,7 @@ public class OrderModelDS {
 				bean.setDate(rs.getString("data_ordine"));
 				bean.setSomma(rs.getDouble("somma_pagata"));
 				bean.setIVA(rs.getDouble("IVA_complessiva"));
+				bean.setUser(rs.getString("id_utente"));
 				ordini.add(bean);
 			}
 		}finally {
