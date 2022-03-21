@@ -27,7 +27,24 @@ body {
 	
 	<h2 style="padding-left: 15px">Ordini effettuati</h2>
 	<hr>
-	<div>
+	<div id="data" name="data" style="padding-left: 15px">
+		<h5>Ricerca per data</h5>
+		<form class="form-inline my-2 my-lg-0" action="SearchServlet">
+			<input type="hidden" value="data" name="action">
+			Ricerca ordini effettuati tra  
+			 <input class="form-control mr-sm-2" type="date" id="data1" name = "data1"> 
+			 <div class="invalid-feedback" id="errorid">Inserisci una data valida</div>
+			 <div class="valid-feedback" id="errorName">Corretto</div>
+			 e  
+			 <input class="form-control mr-sm-2" type="date" id="data2" name = "data2">
+			 <div class="invalid-feedback" id="errorid">Inserisci una data valida</div>
+			 <div class="valid-feedback" id="errorName">Corretto</div>
+      		 <button class="btn btn-outline-secondary" type="submit">Search</button>
+		</form>
+	</div>
+	<hr>
+	<div id="utente" name="utente" style="padding-left: 15px">
+		<h5>Ricerca per utente</h5>
 		<form class="form-inline my-2 my-lg-0" action="SearchServlet">
 			<input type="hidden" value="utente" name="action">
 			 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="utente" name = "utente">

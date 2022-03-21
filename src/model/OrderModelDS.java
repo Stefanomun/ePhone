@@ -64,6 +64,39 @@ public class OrderModelDS {
 		}
 		return ordini;
 	}
+	
+	public Collection<OrderBean> orderCatalogByDate(String data1, String data2) throws SQLException{
+		Connection connessione = null;
+		PreparedStatement statement = null;
+		Collection<OrderBean> ordini = new LinkedList<OrderBean>();
+		String query = "SELECT * FROM ordine WHERE data_ordine >\"" + data1 + "\" AND data_ordine < \"" + data2 + "\"";
+
+		try {
+			connessione = DriverManagerConnectionPool.getConnection();
+			statement = connessione.prepareStatement(query);
+			System.out.println("Ordini: " + statement);
+
+			ResultSet rs = statement.executeQuery(query);
+
+			while(rs.next()) {
+				OrderBean bean = new OrderBean();
+				bean.setId(rs.getInt("id"));
+				bean.setDate(rs.getString("data_ordine"));
+				bean.setSomma(rs.getDouble("somma_pagata"));
+				bean.setIVA(rs.getDouble("IVA_complessiva"));
+				bean.setUser(rs.getString("id_utente"));
+				ordini.add(bean);
+			}
+		}finally {
+			try {
+				if (statement != null)
+					statement.close();
+			} finally {
+				DriverManagerConnectionPool.rilasciaConnessione(connessione);
+			}
+		}
+		return ordini;
+	}
 
 	public Collection<OrderBean> orderCatalog() throws SQLException{
 		Connection connessione = null;

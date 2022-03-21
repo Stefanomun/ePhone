@@ -48,6 +48,19 @@ public class SearchServlet extends HttpServlet {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/OrderCatalog.jsp");
 			dispatcher.forward(request, response);
 		}
+		else {
+			String data1 = request.getParameter("data1");
+			String data2 = request.getParameter("data2");
+			try {
+				ordini = model.orderCatalogByDate(data1, data2);
+				request.setAttribute("ordini", ordini);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/OrderCatalog.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**
